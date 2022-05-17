@@ -10,8 +10,7 @@ jobs:
           node-version: '16'
       - run: npm install -g bats
       - run: bats -v
-
-  get-secrets-in-secrets-manager-gcp:
+      
     permissions:
       contents: 'read'
       id-token: 'write'
