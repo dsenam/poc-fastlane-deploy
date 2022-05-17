@@ -1,4 +1,4 @@
-package com.pocdeploy.newarchitecture.modules;
+package com.android.application.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;

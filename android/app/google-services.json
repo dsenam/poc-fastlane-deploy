@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "855172212777",
+    "project_id": "poc-deploy-app",
+    "storage_bucket": "poc-deploy-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:855172212777:android:634cb8cf158ce777b11438",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "855172212777-pf8g36mjavl4g0ktdasrsstagfq8b7i1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDuaB6cWV8UWnOFkaiuW_jrA1CLH267vnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "855172212777-pf8g36mjavl4g0ktdasrsstagfq8b7i1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

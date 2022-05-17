@@ -1,4 +1,4 @@
-package com.pocdeploy.newarchitecture;
+package com.android.application.newarchitecture;
 
 import android.app.Application;
 import androidx.annotation.NonNull;
@@ -19,9 +19,9 @@ import com.facebook.react.fabric.CoreComponentsRegistry;
 import com.facebook.react.fabric.EmptyReactNativeConfig;
 import com.facebook.react.fabric.FabricJSIModuleProvider;
 import com.facebook.react.uimanager.ViewManagerRegistry;
-import com.pocdeploy.BuildConfig;
-import com.pocdeploy.newarchitecture.components.MainComponentsRegistry;
-import com.pocdeploy.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
+import com.android.application.BuildConfig;
+import com.android.application.newarchitecture.components.MainComponentsRegistry;
+import com.android.application.newarchitecture.modules.MainApplicationTurboModuleManagerDelegate;
 import java.util.ArrayList;
 import java.util.List;
 

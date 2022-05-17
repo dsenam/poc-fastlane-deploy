@@ -1,4 +1,4 @@
-package com.pocdeploy;
+package com.android.application;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
