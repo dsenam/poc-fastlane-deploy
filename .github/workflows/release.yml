@@ -29,7 +29,7 @@ jobs:
         secrets: |-
           mysecret:855172212777/my-secret
 
-    # Write the secrets content
+ 
     - name: Write the secrets content
       if: always()
       run: |
