@@ -27,7 +27,7 @@ jobs:
       uses: 'google-github-actions/get-secretmanager-secrets@v0'
       with:
         secrets: |-
-          mysecret:855172212777/my-secret
+          mysecret:poc-deploy-app/my-secret
 
  
     - id: 'write'
