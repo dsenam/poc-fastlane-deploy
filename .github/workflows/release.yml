@@ -2,6 +2,7 @@ name: learn-github-actions
 on: [push]
 jobs:
   check-bats-version:
+    name: Build and test
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -14,13 +15,13 @@ jobs:
       - run: npm install -g bats
       - run: bats -v
 
-      - name: 'auth'
+      - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
           workload_identity_provider: 'projects/855172212777/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
           service_account: 'firebase-adminsdk-hyi71@poc-deploy-app.iam.gserviceaccount.com'
 
-      - name: 'secrets'
+      - id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v0'
         with:
           secrets: |-
