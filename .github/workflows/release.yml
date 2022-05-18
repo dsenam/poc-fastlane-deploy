@@ -33,5 +33,5 @@ jobs:
     - name: Write the secrets content
       if: always()
       run: |
-        echo '${{ steps.secrets.outputs.my-secret }}'
+        echo '${{ steps.secrets.outputs.mysecret }}'
   
