@@ -13,6 +13,7 @@ jobs:
           node-version: '16'
       - run: npm install -g bats
       - run: bats -v
+      
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
