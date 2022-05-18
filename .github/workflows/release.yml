@@ -30,6 +30,6 @@ jobs:
 
     # Example of using the output
     - id: 'publish'
-      uses: 'foo/bar@main'
+      uses: 'dsenam/poc-fastlane-deploy@main'
       env:
         TOKEN: '${{ steps.secrets.outputs.my-secret }}'
