@@ -7,17 +7,23 @@ jobs:
       contents: 'read'
       id-token: 'write'
     steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - run: npm install -g bats
+      - run: bats -v
       - id: 'auth'
-          uses: 'google-github-actions/auth@v0'
-          with:
+        uses: 'google-github-actions/auth@v0'
+        with:
           workload_identity_provider: 'projects/855172212777/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
           service_account: 'firebase-adminsdk-hyi71@poc-deploy-app.iam.gserviceaccount.com'
-    
+
       - id: 'secrets'
-          uses: 'google-github-actions/get-secretmanager-secrets@v0'
-          with:
-            secrets: |-
-              mysecret:855172212777/my-secret
+        uses: 'google-github-actions/get-secretmanager-secrets@v0'
+        with:
+          secrets: |-
+            mysecret:855172212777/my-secret
 
     # Example of using the output
     - id: 'publish'
