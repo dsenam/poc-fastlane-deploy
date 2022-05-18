@@ -2,6 +2,7 @@ name: learn-github-actions
 on: [push]
 jobs:
   check-bats-version:
+    name: Build and test
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -13,7 +14,7 @@ jobs:
           node-version: '16'
       - run: npm install -g bats
       - run: bats -v
-      
+
       - id: 'auth'
         uses: 'google-github-actions/auth@v0'
         with:
