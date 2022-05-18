@@ -30,7 +30,7 @@ jobs:
           mysecret:855172212777/my-secret
 
  
-    - id: Write the secrets content
+    - id: 'write'
       if: always()
       run: |
         echo '${{ steps.secrets.outputs.mysecret }}'
