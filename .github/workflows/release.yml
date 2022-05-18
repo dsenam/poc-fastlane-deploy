@@ -30,7 +30,7 @@ jobs:
           mysecret:poc-deploy-app/my-secret
 
  
-    - id: 'write'
+    - id: 'writen'
       if: always()
       run: |
         echo '${{ steps.secrets.outputs.mysecret }}'
