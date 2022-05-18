@@ -1,7 +1,8 @@
 name: learn-github-actions
 on: [push]
+
 jobs:
-  check-bats-version:
+  build-test:
     name: Build and test
     runs-on: ubuntu-latest
     permissions:
