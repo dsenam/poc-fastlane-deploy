@@ -2,8 +2,7 @@ name: learn-github-actions
 on: [push]
 
 jobs:
-  check-bats-version:
-    name: check-bats-version
+    check-bats-version:
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
