@@ -23,17 +23,14 @@ jobs:
         workload_identity_provider: 'projects/855172212777/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
         service_account: 'firebase-adminsdk-hyi71@poc-deploy-app.iam.gserviceaccount.com'
 
-    - id: gcloud
-      uses: google-github-actions/setup-gcloud@main
-
     - id: 'secrets'
       uses: 'google-github-actions/get-secretmanager-secrets@v0'
       with:
         secrets: |-
           mysecret:855172212777/my-secret
 
-    # Example of using the output
-    - id: 'publish'
-      uses: 'dsenam/poc-fastlane-deploy@main'
-      env:
-        TOKEN: '${{ steps.secrets.outputs.my-secret }}'
+    # Write the secrets content
+    if: always()
+        run: |
+          echo '${{ steps.secrets.outputs.my-secret }}'
+  
