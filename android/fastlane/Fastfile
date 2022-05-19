@@ -21,7 +21,7 @@ platform :android do
     build_path = options[:build_path]
 
       ensure_env_vars(
-        env_vars: ["FIREBASE_APP_ID", 'FIREBASE_TOKEN']
+        env_vars: ['FIREBASE_TOKEN']
       )
 
       firebase_token = ENV['FIREBASE_TOKEN']
