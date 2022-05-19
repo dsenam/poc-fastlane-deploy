@@ -69,7 +69,7 @@ jobs:
           cd android && \
           bundle install && \
           bundle exec fastlane distribute \
-            build_path:/home/runner/work/poc-fastlane-deploy/poc-fastlane-deploy/android/app/build/outputs/apk/release/debug/app-release.apk
+            build_path:/home/runner/work/poc-fastlane-deploy/poc-fastlane-deploy/android/app/build/outputs/apk/release/app-release.apk
           
 
       
