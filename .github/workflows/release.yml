@@ -42,5 +42,5 @@ jobs:
           " > .env
 
     - name: Show .env
-        run: echo "$(<.env)"
+      run: echo "$(<.env)"
   
