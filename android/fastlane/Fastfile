@@ -24,7 +24,6 @@ platform :android do
         env_vars: ["FIREBASE_APP_ID", 'FIREBASE_TOKEN']
       )
 
-      firebase_app_id = ENV["FIREBASE_APP_ID"]
       firebase_token = ENV['FIREBASE_TOKEN']
 
       firebase_app_distribution(
