@@ -40,10 +40,11 @@ jobs:
       - name: Show .env
         run: echo "$(<.env)"
 
-      - name: Setup FASTLANE ENVFILE ecobici
+      - name: Setup FASTLANE ENVFILE
         run: |
           echo "
-          FIREBASE_TOKEN='${{ steps.secrets.outputs.FIREBASE_TOKEN }}' > ./android/fastlane/.env
+          FIREBASE_TOKEN='${{ steps.secrets.outputs.FIREBASE_TOKEN }}' 
+          " > ./android/fastlane/.env
 
       - name: Show fastlane .env ecobici
         run: echo "$(< ./android/fastlane/.env)"
