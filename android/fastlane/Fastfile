@@ -16,7 +16,7 @@
 default_platform(:android)
 
 platform :android do
-  desc "POC App Firebase Distribution"
+  desc "Distribute APK to Firebase App Distribution (CI)"
   lane :distribute do
     gradle(task: "clean assembleRelease")
 

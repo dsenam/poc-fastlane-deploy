@@ -59,3 +59,11 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
+
+      - name: Build Android Release APK
+        run: |
+          cd android && sudo ./gradlew bundleRelease
+      - name: Upload AAB Artifact
+        uses: softprops/action-gh-release@v1
+        with:
+          files: /home/runner/work/pocDeploy/android/app/build/outputs/bundle/release/app-release.aab
