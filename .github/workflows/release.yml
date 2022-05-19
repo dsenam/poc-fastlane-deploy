@@ -34,4 +34,13 @@ jobs:
       if: always()
       run: |
         echo '${{ steps.secrets.outputs.mysecret }}'
+
+    - name: Setup env
+      run: |
+          echo "
+          MY_SECRET='${{ steps.secrets.outputs.mysecret }}'
+          " > .env
+
+    - name: Show .env
+        run: echo "$(<.env)"
   
