@@ -3,7 +3,7 @@ on: [push]
 
 jobs:
   poc-deploy:
-    name: check-bats-version
+    name: poc-deploy
     runs-on: ubuntu-latest
     permissions:
       contents: 'read'
@@ -39,6 +39,15 @@ jobs:
 
       - name: Show .env
         run: echo "$(<.env)"
+
+      - name: Setup FASTLANE ENVFILE ecobici
+        run: |
+          echo "
+          FIREBASE_APP_ID=${{ secrets.FIREBASE_APP_ID_ANDROID_ECOBICI }}
+          FIREBASE_TOKEN='${{ steps.secrets.outputs.FIREBASE_TOKEN }}' > ./android/fastlane/.env
+
+      - name: Show fastlane .env ecobici
+        run: echo "$(< ./android/fastlane/.env)"
 
       - name: Gradle clear build folder
         run: |

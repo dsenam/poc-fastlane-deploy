@@ -19,12 +19,19 @@ platform :android do
   desc "Distribute APK to Firebase App Distribution (CI)"
   lane :distribute do |options|
     build_path = options[:build_path]
-    
+
+      ensure_env_vars(
+        env_vars: ["FIREBASE_APP_ID", 'FIREBASE_TOKEN']
+      )
+
+      firebase_app_id = ENV["FIREBASE_APP_ID"]
+      firebase_token = ENV['FIREBASE_TOKEN']
 
       firebase_app_distribution(
           app: "1:855172212777:android:634cb8cf158ce777b11438",
           testers: "hebert.albertin@tembici.com, dsena.m@hotmail.com",
           release_notes: "Lots of amazing new features to test out!",
+          firebase_cli_token: firebase_token,
           apk_path: build_path
       )
 
