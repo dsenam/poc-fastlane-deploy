@@ -17,13 +17,15 @@ default_platform(:android)
 
 platform :android do
   desc "Distribute APK to Firebase App Distribution (CI)"
-  lane :distribute do
-    gradle(task: "clean assembleRelease")
+  lane :distribute do |options|
+    build_path = options[:build_path]
+    
 
       firebase_app_distribution(
           app: "1:855172212777:android:634cb8cf158ce777b11438",
           testers: "hebert.albertin@tembici.com, dsena.m@hotmail.com",
-          release_notes: "Lots of amazing new features to test out!"
+          release_notes: "Lots of amazing new features to test out!",
+          apk_path: build_path
       )
 
   end

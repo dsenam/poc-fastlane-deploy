@@ -2,7 +2,7 @@ name: learn-github-actions
 on: [push]
 
 jobs:
-  check-bats-version:
+  poc-deploy:
     name: check-bats-version
     runs-on: ubuntu-latest
     permissions:
@@ -55,19 +55,21 @@ jobs:
           json: '${{ steps.secrets.outputs.GOOGLE_PLAY_ACCESS_KEY }}'
           dir: '/android/'
 
+      - name: Build Android Release APK
+        run: |
+          cd android && sudo ./gradlew assembleRelease
+
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '2.7.2'
 
-      - name: Build Android Release APK
-        run: |
-          cd android && sudo ./gradlew assembleRelease
-
       - name: Run distribute lane
         run: |
           cd android && \
           bundle install && \
-          bundle exec fastlane distribute
+          bundle exec fastlane distribute \
+            build_path:/home/runner/work/poc-fastlane-deploy/poc-fastlane-deploy/android/app/build/outputs/apk/release/debug/app-release.apk
+          
 
       
