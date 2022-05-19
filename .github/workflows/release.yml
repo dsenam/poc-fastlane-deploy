@@ -62,8 +62,12 @@ jobs:
 
       - name: Build Android Release APK
         run: |
-          cd android && sudo ./gradlew bundleRelease
-      - name: Upload AAB Artifact
-        uses: softprops/action-gh-release@v1
-        with:
-          files: /home/runner/work/pocDeploy/android/app/build/outputs/bundle/release/app-release.aab
+          cd android && sudo ./gradlew assembleRelease
+
+      - name: Run distribute lane
+        run: |
+          cd android && \
+          bundle install && \
+          bundle exec fastlane distribute
+
+      
