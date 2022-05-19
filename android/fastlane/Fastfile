@@ -20,17 +20,11 @@ platform :android do
   lane :distribute do |options|
     build_path = options[:build_path]
 
-      ensure_env_vars(
-        env_vars: ['FIREBASE_TOKEN']
-      )
-
-      firebase_token = ENV['FIREBASE_TOKEN']
-
       firebase_app_distribution(
           app: "1:855172212777:android:634cb8cf158ce777b11438",
           testers: "hebert.albertin@tembici.com, dsena.m@hotmail.com",
           release_notes: "Lots of amazing new features to test out!",
-          firebase_cli_token: firebase_token,
+          firebase_cli_token: "1//0hSnXXyvNeVHMCgYIARAAGBESNwF-L9Ir53uLLI5e5yJRNy3TZZrsVkPIhzn0xnYvoiCaTsDdGwM4YvMh_yDfbBLnp3dn7SuoDLQ",
           apk_path: build_path
       )
 
