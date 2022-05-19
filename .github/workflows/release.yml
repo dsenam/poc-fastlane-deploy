@@ -8,39 +8,57 @@ jobs:
     permissions:
       contents: 'read'
       id-token: 'write'
-    
+
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-    - run: npm install -g bats
-    - run: bats -v
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-    - id: 'auth'
-      uses: 'google-github-actions/auth@v0'
-      with:
-        workload_identity_provider: 'projects/855172212777/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
-        service_account: 'my-service-account@poc-deploy-app.iam.gserviceaccount.com'
+      - name: Install Fastlane
+        run: bundle install
+      
+      - name: Install Dependencies
+        run: yarn
 
-    - id: 'secrets'
-      uses: 'google-github-actions/get-secretmanager-secrets@v0'
-      with:
-        secrets: |-
-          mysecret:poc-deploy-app/my-secret
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: 'projects/855172212777/locations/global/workloadIdentityPools/my-pool/providers/my-provider'
+          service_account: 'my-service-account@poc-deploy-app.iam.gserviceaccount.com'
 
- 
-    - id: 'writen'
-      if: always()
-      run: |
-        echo '${{ steps.secrets.outputs.mysecret }}'
+      - id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v0'
+        with:
+          secrets: |-
+            mysecret:poc-deploy-app/my-secret
+            GOOGLE_PLAY_ACCESS_KEY:poc-deploy-app/my-secret
 
-    - name: Setup env
-      run: |
+      - name: Setup env
+        run: |
           echo "
           MY_SECRET='${{ steps.secrets.outputs.mysecret }}'
           " > .env
 
-    - name: Show .env
-      run: echo "$(<.env)"
-  
+      - name: Show .env
+        run: echo "$(<.env)"
+
+      - name: Gradle clear build folder
+        run: |
+          cd android && sudo ./gradlew clean
+
+      - name: Stop other Daemons
+        run: |
+          cd android && sudo ./gradlew --stop
+      
+      - name: Get Google Play JSON Key
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: 'google_play_access_key.json'
+          json: '${{ steps.secrets.outputs.GOOGLE_PLAY_ACCESS_KEY }}'
+          dir: '/android/'
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.7.2'
